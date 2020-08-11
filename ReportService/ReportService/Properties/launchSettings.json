@@ -18,8 +18,7 @@
     },
     "ReportService": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/report",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
