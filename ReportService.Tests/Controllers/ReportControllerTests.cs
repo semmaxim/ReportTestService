@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -31,28 +31,28 @@ namespace ReportService.Tests.Controllers
 				{"I11-B11", 120000m},
 			};
 
-			var department1 = new Department {Name = "ФинОтдел"};
+			var department1 = new Department {Name = "Р¤РёРЅРћС‚РґРµР»"};
 			department1.Employees.AddRange(new[]
 			{
-				new Employee{ Name = "Андрей Сергеевич Бубнов", Inn = "I01", Department = department1},
-				new Employee{ Name = "Григорий Евсеевич Зиновьев", Inn = "I02", Department = department1},
-				new Employee{ Name = "Яков Михайлович Свердлов", Inn = "I03", Department = department1},
-				new Employee{ Name = "Алексей Иванович Рыков", Inn = "I04", Department = department1}
+				new Employee{ Name = "РђРЅРґСЂРµР№ РЎРµСЂРіРµРµРІРёС‡ Р‘СѓР±РЅРѕРІ", Inn = "I01", Department = department1},
+				new Employee{ Name = "Р“СЂРёРіРѕСЂРёР№ Р•РІСЃРµРµРІРёС‡ Р—РёРЅРѕРІСЊРµРІ", Inn = "I02", Department = department1},
+				new Employee{ Name = "РЇРєРѕРІ РњРёС…Р°Р№Р»РѕРІРёС‡ РЎРІРµСЂРґР»РѕРІ", Inn = "I03", Department = department1},
+				new Employee{ Name = "РђР»РµРєСЃРµР№ РРІР°РЅРѕРІРёС‡ Р С‹РєРѕРІ", Inn = "I04", Department = department1}
 			});
-			var department2 = new Department {Name = "Бухгалтерия"};
+			var department2 = new Department {Name = "Р‘СѓС…РіР°Р»С‚РµСЂРёСЏ"};
 			department2.Employees.AddRange(new[]
 			{
-				new Employee{ Name = "Василий Васильевич Кузнецов", Inn = "I05", Department = department2},
-				new Employee{ Name = "Демьян Сергеевич Коротченко", Inn = "I06", Department = department2},
-				new Employee{ Name = "Михаил Андреевич Суслов", Inn = "I07", Department = department2}
+				new Employee{ Name = "Р’Р°СЃРёР»РёР№ Р’Р°СЃРёР»СЊРµРІРёС‡ РљСѓР·РЅРµС†РѕРІ", Inn = "I05", Department = department2},
+				new Employee{ Name = "Р”РµРјСЊСЏРЅ РЎРµСЂРіРµРµРІРёС‡ РљРѕСЂРѕС‚С‡РµРЅРєРѕ", Inn = "I06", Department = department2},
+				new Employee{ Name = "РњРёС…Р°РёР» РђРЅРґСЂРµРµРІРёС‡ РЎСѓСЃР»РѕРІ", Inn = "I07", Department = department2}
 			});
-			var department3 = new Department {Name = "ИТ"};
+			var department3 = new Department {Name = "РРў"};
 			department3.Employees.AddRange(new[]
 			{
-				new Employee{ Name = "Фрол Романович Козлов", Inn = "I08", Department = department3},
-				new Employee{ Name = "Дмитрий Степанович Полянски", Inn = "I09", Department = department3},
-				new Employee{ Name = "Андрей Павлович Кириленко", Inn = "I10", Department = department3},
-				new Employee{ Name = "Арвид Янович Пельше", Inn = "I11", Department = department3}
+				new Employee{ Name = "Р¤СЂРѕР» Р РѕРјР°РЅРѕРІРёС‡ РљРѕР·Р»РѕРІ", Inn = "I08", Department = department3},
+				new Employee{ Name = "Р”РјРёС‚СЂРёР№ РЎС‚РµРїР°РЅРѕРІРёС‡ РџРѕР»СЏРЅСЃРєРё", Inn = "I09", Department = department3},
+				new Employee{ Name = "РђРЅРґСЂРµР№ РџР°РІР»РѕРІРёС‡ РљРёСЂРёР»РµРЅРєРѕ", Inn = "I10", Department = department3},
+				new Employee{ Name = "РђСЂРІРёРґ РЇРЅРѕРІРёС‡ РџРµР»СЊС€Рµ", Inn = "I11", Department = department3}
 			});
 
 			var departmentRepository = new Mock<IDepartmentsRepository>();
@@ -74,29 +74,29 @@ namespace ReportService.Tests.Controllers
 
 			var controller = new ReportController(departmentRepository.Object, empCodeResolverService.Object, salaryResolverService.Object, loggerProvider.Object);
 			var result = await controller.CreateReport(2019, 5);
-			Assert.Equal(@"Май 2019
+			Assert.Equal(@"РњР°Р№ 2019
 --------------------------------------------
-ФинОтдел
-Андрей Сергеевич Бубнов 70000р
-Григорий Евсеевич Зиновьев 65000р
-Яков Михайлович Свердлов 80000р
-Алексей Иванович Рыков 90000р
-Всего по отделу 305000р
+Р¤РёРЅРћС‚РґРµР»
+РђРЅРґСЂРµР№ РЎРµСЂРіРµРµРІРёС‡ Р‘СѓР±РЅРѕРІ 70000СЂ
+Р“СЂРёРіРѕСЂРёР№ Р•РІСЃРµРµРІРёС‡ Р—РёРЅРѕРІСЊРµРІ 65000СЂ
+РЇРєРѕРІ РњРёС…Р°Р№Р»РѕРІРёС‡ РЎРІРµСЂРґР»РѕРІ 80000СЂ
+РђР»РµРєСЃРµР№ РРІР°РЅРѕРІРёС‡ Р С‹РєРѕРІ 90000СЂ
+Р’СЃРµРіРѕ РїРѕ РѕС‚РґРµР»Сѓ 305000СЂ
 --------------------------------------------
-Бухгалтерия
-Василий Васильевич Кузнецов 50000р
-Демьян Сергеевич Коротченко 55000р
-Михаил Андреевич Суслов 35000р
-Всего по отделу 140000р
+Р‘СѓС…РіР°Р»С‚РµСЂРёСЏ
+Р’Р°СЃРёР»РёР№ Р’Р°СЃРёР»СЊРµРІРёС‡ РљСѓР·РЅРµС†РѕРІ 50000СЂ
+Р”РµРјСЊСЏРЅ РЎРµСЂРіРµРµРІРёС‡ РљРѕСЂРѕС‚С‡РµРЅРєРѕ 55000СЂ
+РњРёС…Р°РёР» РђРЅРґСЂРµРµРІРёС‡ РЎСѓСЃР»РѕРІ 35000СЂ
+Р’СЃРµРіРѕ РїРѕ РѕС‚РґРµР»Сѓ 140000СЂ
 --------------------------------------------
-ИТ
-Фрол Романович Козлов 90000р
-Дмитрий Степанович Полянски 120000р
-Андрей Павлович Кириленко 110000р
-Арвид Янович Пельше 120000р
-Всего по отделу 440000р
+РРў
+Р¤СЂРѕР» Р РѕРјР°РЅРѕРІРёС‡ РљРѕР·Р»РѕРІ 90000СЂ
+Р”РјРёС‚СЂРёР№ РЎС‚РµРїР°РЅРѕРІРёС‡ РџРѕР»СЏРЅСЃРєРё 120000СЂ
+РђРЅРґСЂРµР№ РџР°РІР»РѕРІРёС‡ РљРёСЂРёР»РµРЅРєРѕ 110000СЂ
+РђСЂРІРёРґ РЇРЅРѕРІРёС‡ РџРµР»СЊС€Рµ 120000СЂ
+Р’СЃРµРіРѕ РїРѕ РѕС‚РґРµР»Сѓ 440000СЂ
 --------------------------------------------
-Всего по предприятию 885000р", result);
+Р’СЃРµРіРѕ РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ 885000СЂ", result);
 		}
 	}
 }
